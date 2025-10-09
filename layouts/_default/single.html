@@ -86,66 +86,8 @@
 
     </div>
 
-<<<<<<< HEAD
-    <!-- Copyright -->
-    {{ partial "post/copyright.html" . }}
-
-
-    <!-- Reward -->
-    {{ partial "post/reward.html" . }}
-
-
-    <footer class="post-footer">
-      {{ with .Params.tags -}}
-        <div class="post-tags">
-          {{ range . }}
-            {{- $name := . -}}
-            {{- with $.Site.GetPage "taxonomy" (printf "tags/%s" $name) | default ($.Site.GetPage "taxonomy" (printf "tags/%s" ($name | urlize))) -}}
-              <a href="{{ .Permalink }}">{{ $name }}</a>
-            {{ end -}}
-          {{ end }}
-        </div>
-      {{- end }}
-
-
-      <!-- Post Pagination -->
-      <nav class="post-nav">
-        {{ with .NextInSection }}
-          <a class="prev" href="{{ .RelPermalink }}">
-            {{/* icon left */}}
-            <i class="iconfont">
-              {{ partial "svg/left.svg" }}
-            </i>
-            <span class="prev-text nav-default">{{ .Title }}</span>
-            <span class="prev-text nav-mobile">{{ i18n "prev_post" }}</span>
-          </a>
-        {{- end }}
-        {{ with .PrevInSection }}
-          <a class="next" href="{{ .RelPermalink }}">
-            <span class="next-text nav-default">{{ .Title }}</span>
-            <span class="prev-text nav-mobile">{{ i18n "next_post" }}</span>
-            {{/* icon right */}}
-            <i class="iconfont">
-              {{ partial "svg/right.svg" }}
-            </i>
-          </a>
-        {{- end }}
-      </nav>
-    </footer>
-  </article>
-
-  <!-- Author Info -->
-  {{ if and (.Params.author | default .Site.Params.Author.name) (.Params.showAuthorInfo | default .Site.Params.showAuthorInfo) }}
-    {{ partial "author_info.html" (dict "author" (.Params.author | default .Site.Params.Author.name) "context" $) }}
-  {{ end }}
-
-
-  <!-- Comments -->
-  {{ partial "comments.html" . }}
-=======
     <aside class="right-sidebar">
       {{ partial "sidebar/post_right_sidebar.html" . }}
     </aside>
   </div>
->>>>>>> b4aac7720efcf0d7f25258c12d64d472402d03cb
 {{- end }}
