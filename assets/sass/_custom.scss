@@ -4,7 +4,173 @@
  *------------------------------------------------------------------------**/
 
 /**------------------------------------------------------------------------
- *                        Chinese Font Example
+ *                        Header Styling
+ *------------------------------------------------------------------------**/
+
+// Original: default Pico CSS theme colors
+// Change header background to white and text to black
+.desktop-header {
+  background: #fff;
+
+  a {
+    color: #000;
+  }
+}
+
+/**------------------------------------------------------------------------
+ *                        Body & Layout Styling
+ *------------------------------------------------------------------------**/
+
+// Original: default Pico CSS body background
+// Change body background to light gray
+body {
+  background-color: #f5f5f5;
+}
+
+// Original: _base.scss sets margin-top: 3rem (desktop) and 1rem (mobile)
+// Increase spacing above main content
+.main {
+  margin-top: 4rem;
+
+  @include style-to-mobile() {
+    margin-top: 2rem;
+  }
+}
+
+/**------------------------------------------------------------------------
+ *                        Post Card Styling
+ *------------------------------------------------------------------------**/
+
+// Add white background and padding to post content area
+.post {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  @include style-to-mobile() {
+    padding: 1.5rem;
+  }
+}
+
+// Adjust post header spacing
+.post-header {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+
+  .post-title {
+    text-decoration: none;
+    font-weight: 600;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+/**------------------------------------------------------------------------
+ *                        Width Alignment
+ *------------------------------------------------------------------------**/
+
+// Make content-wrapper .content match the width of .jane-card.post (40em)
+.content-wrapper .content {
+  max-width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**------------------------------------------------------------------------
+ *                        Typography - Line Height
+ *------------------------------------------------------------------------**/
+
+// Original: Pico CSS default line-height
+// Increase line-height to 1.8 for better Chinese/CJK text readability
+// Applies to all screen sizes for consistent comfortable reading experience
+.post-content,
+.post-content p,
+.post-content li,
+.post-content blockquote {
+  line-height: 1.8;
+}
+
+/**------------------------------------------------------------------------
+ *                        Typography - Inter-Paragraph Spacing
+ *------------------------------------------------------------------------**/
+
+// Original: Theme default uses --pico-typography-spacing-vertical: 1rem
+// Increase paragraph spacing by 1.2x (from 1rem to 1.2rem)
+.post-content {
+  --pico-typography-spacing-vertical: 1.2rem;
+}
+
+/**------------------------------------------------------------------------
+ *                        Typography - Footnotes
+ *------------------------------------------------------------------------**/
+
+// Make footnotes exactly 0.9 (90%) of article content font size
+// Theme base: Desktop 18px, Mobile 15px
+.footnotes {
+  font-size: 0.9em;
+  // Desktop: 18px * 0.9 = 16.2px
+  // Mobile: 15px * 0.9 = 13.5px
+  margin-top: 3rem;
+
+  p,
+  li {
+    line-height: 1.7;
+    margin-bottom: 0.5em;
+  }
+
+  @include style-to-mobile() {
+    margin-top: 2rem;
+  }
+}
+
+// Footnote reference numbers in content
+.footnote-ref {
+  font-size: 0.85em;
+  font-weight: 600;
+
+  @include style-to-mobile() {
+    font-size: 0.8em;
+  }
+}
+
+// Hover popup content for footnote preview
+.fn-content .fn-text {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/**------------------------------------------------------------------------
+ *                        UI Component Visibility
+ *------------------------------------------------------------------------**/
+
+// !important is intentional here: visibility enforcement must survive any
+// specificity race with theme or third-party styles that render these elements.
+
+// Hide RSS icon and menu item
+.icon--rss {
+  display: none !important;
+}
+
+.desktop-navbar .menu .menu-item:has(.icon--rss) {
+  display: none !important;
+}
+
+// Hide the dark mode toggle button in both desktop and mobile headers
+.theme-toggle {
+  display: none !important;
+}
+
+// Also hide the parent menu item to avoid the empty space it would leave
+.menu-item:has(.theme-toggle),
+.mobile-menu-item:has(.theme-toggle) {
+  display: none !important;
+}
+
+/**------------------------------------------------------------------------
+ *                        Chinese Font Example (for reference)
  *------------------------------------------------------------------------**/
 // body:lang(zh) {
 //   line-height: 1.618;

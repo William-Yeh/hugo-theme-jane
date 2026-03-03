@@ -1,24 +1,55 @@
 // ==============================
 // Shortcode Notice
 // ==============================
+// Original: Basic notice box styling with color themes
+// Enhanced: Modern design with rounded corners, shadows, and better spacing
 
 .notice {
-  margin: 1em 0;
+  // Original: margin: 1em 0;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
 
   &__content {
-    padding: 0.6em 1em;
+    // Original: padding: 0.6em 1em;
+    padding: 1em 1.25em;
     display: block;
     font-size: 1em;
     margin-top: 0;
     margin-bottom: 0;
     color: #666;
+    line-height: 1.8;
+
+    // Ensure proper spacing for content inside notice
+    p {
+      margin-bottom: 0.8rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      margin-top: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    li {
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
   }
 
   &__title {
     color: #fff;
-    padding: 0.5em 1em;
-    font-weight: bold;
+    // Original: padding: 0.5em 1em;
+    padding: 0.75em 1.25em;
+    font-weight: 600; // Changed from bold to 600
     text-transform: capitalize;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   // 注意类型样式
@@ -55,6 +86,21 @@
     }
     .notice__content {
       background: #FAE2E2;
+    }
+  }
+
+  // Responsive adjustments for mobile
+  @include style-to-mobile() {
+    margin: 1.2em 0;
+
+    &__title {
+      padding: 0.6em 1em;
+      font-size: 0.95em;
+    }
+
+    &__content {
+      padding: 0.8em 1em;
+      font-size: 0.95em;
     }
   }
 }

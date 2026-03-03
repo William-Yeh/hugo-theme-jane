@@ -1,5 +1,5 @@
 <!-- Jane theme main style -->
-{{ $styleOpts := dict "transpiler" "dartsass" "targetPath" "css/style.css" "vars" site.Params.style}}
+{{ $styleOpts := dict "transpiler" "dartsass" "targetPath" "css/style.css" "vars" site.Params.style "silenceDeprecations" (slice "import" "global-builtin" "color-functions" "if-function") }}
 {{ $style := resources.Get "sass/jane.scss" | toCSS $styleOpts | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" media="screen"
   crossorigin="anonymous">
