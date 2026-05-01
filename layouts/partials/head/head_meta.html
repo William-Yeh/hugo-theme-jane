@@ -1,11 +1,14 @@
 {{/* Only add hreflang tags if site is multilingual */}}
+{{/* Original: hreflang="{{ .Site.LanguageCode }}"
+     `.Site.LanguageCode` was deprecated in Hugo v0.158.0; replaced with
+     `.Site.Language.Locale` (set via `locale` in config.toml). */}}
 {{ if hugo.IsMultilingual }}
   {{/* Add translations */}}
   {{ range .Translations }}
-  <link rel="alternate" hreflang="{{ .Site.LanguageCode }}" href="{{ .Permalink }}" />
+  <link rel="alternate" hreflang="{{ .Site.Language.Locale }}" href="{{ .Permalink }}" />
   {{ end }}
   {{/* Add self-referencing hreflang */}}
-  <link rel="alternate" hreflang="{{ .Site.LanguageCode }}" href="{{ .Permalink }}" />
+  <link rel="alternate" hreflang="{{ .Site.Language.Locale }}" href="{{ .Permalink }}" />
 {{ end }}
 
 <meta name="renderer" content="webkit" />

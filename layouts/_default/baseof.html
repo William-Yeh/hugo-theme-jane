@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode | default `en` }}" itemscope itemtype="http://schema.org/WebPage" data-theme="light">
+{{/* Original: <html lang="{{ $.Site.LanguageCode | default `en` }}" ...>
+     `.Site.LanguageCode` was deprecated in Hugo v0.158.0; replaced with
+     `.Site.Language.Locale`. Set `locale` (BCP47, e.g. "zh-TW") under
+     [languages.<lang>] in config.toml. */}}
+<html lang="{{ $.Site.Language.Locale | default `en` }}" itemscope itemtype="http://schema.org/WebPage" data-theme="light">
 
 <head>
   <meta charset="utf-8" />
